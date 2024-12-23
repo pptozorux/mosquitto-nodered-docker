@@ -1,0 +1,51 @@
+[
+    {
+        "id": "6f773d2488747d0e",
+        "type": "tab",
+        "label": "Flux 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ccc85c541234edfb",
+        "type": "postgreSQLConfig",
+        "name": "postgresql",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "nodered",
+        "databaseFieldType": "str",
+        "ssl": "true",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "etu",
+        "userFieldType": "str",
+        "password": "-etu-",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "08209c96f2ed087f",
+        "type": "postgresql",
+        "z": "6f773d2488747d0e",
+        "name": "",
+        "query": "SELECT * FROM ;",
+        "postgreSQLConfig": "ccc85c541234edfb",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 230,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    }
+]

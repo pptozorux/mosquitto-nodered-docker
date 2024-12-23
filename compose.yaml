@@ -19,3 +19,14 @@ services:
     environment:
       - TZ=Europe/Paris
     restart: unless-stopped
+  
+  postgres:
+    container_name: postgres
+    image: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db/data:/var/lib/postgresql/data
+    env_file:
+      - db/.env
+    restart: unless-stopped
