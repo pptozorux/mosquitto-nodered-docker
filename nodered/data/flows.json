@@ -2,6 +2,14 @@
     {
         "id": "6f773d2488747d0e",
         "type": "tab",
+        "label": "Oui",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "80c8bfe066a469fa",
+        "type": "tab",
         "label": "Flux 1",
         "disabled": false,
         "info": "",
@@ -11,13 +19,13 @@
         "id": "ccc85c541234edfb",
         "type": "postgreSQLConfig",
         "name": "postgresql",
-        "host": "127.0.0.1",
+        "host": "192.168.50.30",
         "hostFieldType": "str",
         "port": 5432,
         "portFieldType": "num",
         "database": "nodered",
         "databaseFieldType": "str",
-        "ssl": "true",
+        "ssl": "false",
         "sslFieldType": "bool",
         "applicationName": "",
         "applicationNameType": "str",
@@ -31,6 +39,243 @@
         "userFieldType": "str",
         "password": "-etu-",
         "passwordFieldType": "str"
+    },
+    {
+        "id": "a6cdbac67a21c79a",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.50.30",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "d1d930721eeacfde",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "821d4742cbe81e5f",
+        "type": "ui_group",
+        "name": "dash1",
+        "tab": "",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "bbbd71f67574d536",
+        "type": "ui_tab",
+        "name": "Dashboard infra",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "695d5842399a4077",
+        "type": "ui_group",
+        "name": "Infra GOATESQUE",
+        "tab": "bbbd71f67574d536",
+        "order": 1,
+        "disp": true,
+        "width": "9",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "47a662bfab7d0c99",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.100.248",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "a8d9d91c9256c660",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "nodered",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "etu",
+        "userFieldType": "str",
+        "password": "-etu-",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "3a60880de920b501",
+        "type": "ui_group",
+        "name": "SERVEUR01",
+        "tab": "bbbd71f67574d536",
+        "order": 2,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "8a7c7cefeeb6db7a",
+        "type": "ui_group",
+        "name": "SERVEUR 02",
+        "tab": "bbbd71f67574d536",
+        "order": 3,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
     },
     {
         "id": "08209c96f2ed087f",
@@ -47,5 +292,537 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "79dfc7ac55dfc51a",
+        "type": "mqtt in",
+        "z": "6f773d2488747d0e",
+        "name": "",
+        "topic": "router/log",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "a6cdbac67a21c79a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 220,
+        "y": 320,
+        "wires": [
+            [
+                "c4489008c19b8359",
+                "e71d372970d2b167"
+            ]
+        ]
+    },
+    {
+        "id": "c4489008c19b8359",
+        "type": "debug",
+        "z": "6f773d2488747d0e",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "e71d372970d2b167",
+        "type": "function",
+        "z": "6f773d2488747d0e",
+        "name": "Appareil connectés",
+        "func": "msg.payload = {\n    devices: msg.payload.devices || []\n};\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 280,
+        "wires": [
+            [
+                "8784dbf21f86c127",
+                "615d57747f119141"
+            ]
+        ]
+    },
+    {
+        "id": "8784dbf21f86c127",
+        "type": "debug",
+        "z": "6f773d2488747d0e",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "615d57747f119141",
+        "type": "ui_template",
+        "z": "6f773d2488747d0e",
+        "group": "695d5842399a4077",
+        "name": "",
+        "order": 1,
+        "width": 9,
+        "height": 6,
+        "format": "<style>\n    table {\n        width: 100%;\n        border-collapse: collapse;\n        margin: 10px 0;\n        font-size: 14px;\n        font-family: Arial, sans-serif;\n        text-align: left;\n        table-layout: fixed;\n    }\n\n    thead th {\n        background-color: #007BFF;\n        color: white;\n        padding: 8px;\n        word-wrap: break-word;\n    }\n\n    tbody td {\n        padding: 8px;\n        border: 1px solid #ddd;\n        word-wrap: break-word;\n    }\n\n    tbody tr:nth-child(even) {\n        background-color: #f2f2f2;\n    }\n\n    tbody tr:hover {\n        background-color: #ddd;\n    }\n\n    /* Style pour le texte rouge */\n    .unknown {\n        color: red;\n        font-weight: bold;\n        /* Optionnel : met en gras */\n    }\n</style>\n\n<table>\n    <thead>\n        <tr>\n            <th style=\"width: 5%;\">#</th>\n            <th style=\"width: 30%;\">NAME</th>\n            <th style=\"width: 35%;\">IP Address</th>\n            <th style=\"width: 30%;\">MAC Address</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr ng-repeat=\"device in msg.payload.devices\">\n            <td>{{$index + 1}}</td>\n            <td ng-class=\"{'unknown': device.name === 'Unknown'}\">{{device.name || 'Unknown'}}</td>\n            <td>{{device.ip}}</td>\n            <td>{{device.mac}}</td>\n        </tr>\n    </tbody>\n</table>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 700,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "59393467daf37ed5",
+        "type": "postgresql",
+        "z": "80c8bfe066a469fa",
+        "name": "",
+        "query": "",
+        "postgreSQLConfig": "ccc85c541234edfb",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 770,
+        "y": 360,
+        "wires": [
+            [
+                "fdfebaf043d8de1b"
+            ]
+        ]
+    },
+    {
+        "id": "1035ddcb795fc411",
+        "type": "mqtt in",
+        "z": "80c8bfe066a469fa",
+        "name": "",
+        "topic": "router/log",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "a6cdbac67a21c79a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 300,
+        "y": 360,
+        "wires": [
+            [
+                "95728641539a9926",
+                "2e6d3199e5089294"
+            ]
+        ]
+    },
+    {
+        "id": "2e6d3199e5089294",
+        "type": "function",
+        "z": "80c8bfe066a469fa",
+        "name": "Store",
+        "func": "var devices = msg.payload.devices;\nvar timestamp = msg.payload.timestamp;\nvar queries = [];\n\nvar messages = devices.map(function (device) {\n    return {\n        query: `INSERT INTO DEVICES(TIMESTAMP, IP, NAME, MAC) VALUES ('${timestamp}', '${device.ip}', '${device.name}', '${device.mac}') ;`\n    };\n});\n\nreturn [messages];\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 360,
+        "wires": [
+            [
+                "f14e4ed39ff9f13b",
+                "59393467daf37ed5"
+            ]
+        ]
+    },
+    {
+        "id": "f14e4ed39ff9f13b",
+        "type": "debug",
+        "z": "80c8bfe066a469fa",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "query",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "95728641539a9926",
+        "type": "debug",
+        "z": "80c8bfe066a469fa",
+        "name": "msg.payload.devices",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.devices",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "fdfebaf043d8de1b",
+        "type": "debug",
+        "z": "80c8bfe066a469fa",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "pgsql",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "eed29cf259937384",
+        "type": "postgresql",
+        "z": "80c8bfe066a469fa",
+        "name": "",
+        "query": "",
+        "postgreSQLConfig": "ccc85c541234edfb",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 790,
+        "y": 580,
+        "wires": [
+            [
+                "a1843a48987f1ac4"
+            ]
+        ]
+    },
+    {
+        "id": "7d7ee0b43fa83bcc",
+        "type": "mqtt in",
+        "z": "80c8bfe066a469fa",
+        "name": "",
+        "topic": "serveur01/Trame",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "a6cdbac67a21c79a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 340,
+        "y": 580,
+        "wires": [
+            [
+                "334c84db80de6382",
+                "29de17d653a65cb6",
+                "30023bebca95a7ab"
+            ]
+        ]
+    },
+    {
+        "id": "29de17d653a65cb6",
+        "type": "function",
+        "z": "80c8bfe066a469fa",
+        "name": "Store",
+        "func": "var uptime = msg.payload.uptime;\nvar timestamp = msg.payload.timestamp;\nvar free_heap = msg.payload.heap_free;\nvar ip = msg.payload.esp_ip ;\nvar uptime = msg.payload.uptime ;\n\nvar query = `INSERT INTO SERVERS_LOAD(TIMESTAMP, IP, SERVER_NAME, FREE_HEAP, UPTIME) VALUES ('${timestamp}', '${ip}', 'SERVEUR01', '${free_heap}', '${uptime}')` ; \n\nmsg.query = query ;\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 580,
+        "wires": [
+            [
+                "f44ada09c67998dc",
+                "eed29cf259937384"
+            ]
+        ]
+    },
+    {
+        "id": "f44ada09c67998dc",
+        "type": "debug",
+        "z": "80c8bfe066a469fa",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "query",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "334c84db80de6382",
+        "type": "debug",
+        "z": "80c8bfe066a469fa",
+        "name": "Trame",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "a1843a48987f1ac4",
+        "type": "debug",
+        "z": "80c8bfe066a469fa",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "pgsql",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "30023bebca95a7ab",
+        "type": "function",
+        "z": "80c8bfe066a469fa",
+        "name": "Gauge Free heap",
+        "func": "msg.payload = msg.payload.heap_free ;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 680,
+        "wires": [
+            [
+                "4dd8e7a867bcb73d"
+            ]
+        ]
+    },
+    {
+        "id": "4dd8e7a867bcb73d",
+        "type": "ui_gauge",
+        "z": "80c8bfe066a469fa",
+        "name": "",
+        "group": "3a60880de920b501",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "FREE HEAP",
+        "label": "units",
+        "format": "{{msg.payload.heap_free}}",
+        "min": "200000",
+        "max": "250000",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 770,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "141140227145f56e",
+        "type": "postgresql",
+        "z": "80c8bfe066a469fa",
+        "name": "",
+        "query": "",
+        "postgreSQLConfig": "ccc85c541234edfb",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 790,
+        "y": 880,
+        "wires": [
+            [
+                "19f6936c09037d77"
+            ]
+        ]
+    },
+    {
+        "id": "29f26409d2890ec3",
+        "type": "mqtt in",
+        "z": "80c8bfe066a469fa",
+        "name": "",
+        "topic": "serveur02/Trame",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "a6cdbac67a21c79a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 340,
+        "y": 880,
+        "wires": [
+            [
+                "545a2d069502d90a",
+                "6cf3ae86cc46fcea",
+                "b543f87c374ff952"
+            ]
+        ]
+    },
+    {
+        "id": "6cf3ae86cc46fcea",
+        "type": "function",
+        "z": "80c8bfe066a469fa",
+        "name": "Store",
+        "func": "var uptime = msg.payload.uptime;\nvar timestamp = msg.payload.timestamp;\nvar free_heap = msg.payload.heap_free;\nvar ip = msg.payload.esp_ip ;\nvar uptime = msg.payload.uptime ;\n\nvar query = `INSERT INTO SERVERS_LOAD(TIMESTAMP, IP, SERVER_NAME, FREE_HEAP, UPTIME) VALUES ('${timestamp}', '${ip}', 'SERVEUR02', '${free_heap}', '${uptime}')` ; \n\nmsg.query = query ;\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 880,
+        "wires": [
+            [
+                "1d9619b7bec5194b",
+                "141140227145f56e"
+            ]
+        ]
+    },
+    {
+        "id": "1d9619b7bec5194b",
+        "type": "debug",
+        "z": "80c8bfe066a469fa",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "query",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "545a2d069502d90a",
+        "type": "debug",
+        "z": "80c8bfe066a469fa",
+        "name": "Trame",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "19f6936c09037d77",
+        "type": "debug",
+        "z": "80c8bfe066a469fa",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "pgsql",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "b543f87c374ff952",
+        "type": "function",
+        "z": "80c8bfe066a469fa",
+        "name": "Gauge Free heap",
+        "func": "msg.payload = msg.payload.heap_free ;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 980,
+        "wires": [
+            [
+                "50102b2d955a9308"
+            ]
+        ]
+    },
+    {
+        "id": "50102b2d955a9308",
+        "type": "ui_gauge",
+        "z": "80c8bfe066a469fa",
+        "name": "",
+        "group": "8a7c7cefeeb6db7a",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "FREE HEAP",
+        "label": "units",
+        "format": "{{msg.payload.heap_free}}",
+        "min": "200000",
+        "max": "250000",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 770,
+        "y": 980,
+        "wires": []
     }
 ]
