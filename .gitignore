@@ -1,5 +1,4 @@
 mqtt/data
-mqtt/config/password_file
 nodered/data/*
 !nodered/data/flows.json
 db/.env
