@@ -19,5 +19,6 @@ CREATE TABLE servers_load (
     ip VARCHAR NOT NULL,
     server_name VARCHAR NOT NULL,
     free_heap INTEGER NOT NULL,
+    used_heap INTEGER NOT NULL,
     uptime INTEGER NOT NULL
 );
