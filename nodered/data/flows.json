@@ -404,9 +404,7 @@
         "x": 770,
         "y": 360,
         "wires": [
-            [
-                "fdfebaf043d8de1b"
-            ]
+            []
         ]
     },
     {
@@ -426,7 +424,6 @@
         "y": 360,
         "wires": [
             [
-                "95728641539a9926",
                 "2e6d3199e5089294"
             ]
         ]
@@ -447,61 +444,9 @@
         "y": 360,
         "wires": [
             [
-                "f14e4ed39ff9f13b",
                 "59393467daf37ed5"
             ]
         ]
-    },
-    {
-        "id": "f14e4ed39ff9f13b",
-        "type": "debug",
-        "z": "80c8bfe066a469fa",
-        "name": "debug 5",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "query",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 780,
-        "y": 280,
-        "wires": []
-    },
-    {
-        "id": "95728641539a9926",
-        "type": "debug",
-        "z": "80c8bfe066a469fa",
-        "name": "msg.payload.devices",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload.devices",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 560,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "fdfebaf043d8de1b",
-        "type": "debug",
-        "z": "80c8bfe066a469fa",
-        "name": "debug 7",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "pgsql",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 960,
-        "y": 360,
-        "wires": []
     },
     {
         "id": "eed29cf259937384",
@@ -540,7 +485,10 @@
             [
                 "334c84db80de6382",
                 "29de17d653a65cb6",
-                "30023bebca95a7ab"
+                "30023bebca95a7ab",
+                "78114f41778a34c7",
+                "74882e63397841d8",
+                "c4079b71990e6ac8"
             ]
         ]
     },
@@ -549,7 +497,7 @@
         "type": "function",
         "z": "80c8bfe066a469fa",
         "name": "Store",
-        "func": "var uptime = msg.payload.uptime;\nvar timestamp = msg.payload.timestamp;\nvar free_heap = msg.payload.heap_free;\nvar ip = msg.payload.esp_ip ;\nvar uptime = msg.payload.uptime ;\n\nvar query = `INSERT INTO SERVERS_LOAD(TIMESTAMP, IP, SERVER_NAME, FREE_HEAP, UPTIME) VALUES ('${timestamp}', '${ip}', 'SERVEUR01', '${free_heap}', '${uptime}')` ; \n\nmsg.query = query ;\n\nreturn msg;\n",
+        "func": "var uptime = msg.payload.uptime;\nvar timestamp = msg.payload.timestamp;\nvar free_heap = msg.payload.heap_free;\nvar ip = msg.payload.esp_ip ;\nvar uptime = msg.payload.uptime ;\nvar used_heap = msg.payload.heap_used ;\n\n\nvar query = `INSERT INTO SERVERS_LOAD(TIMESTAMP, IP, SERVER_NAME, FREE_HEAP, USED_HEAP, UPTIME) VALUES ('${timestamp}', '${ip}', 'SERVEUR01', '${free_heap}', '${used_heap}', '${uptime}')` ; \n\nmsg.query = query ;\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -621,18 +569,20 @@
         "type": "function",
         "z": "80c8bfe066a469fa",
         "name": "Gauge Free heap",
-        "func": "msg.payload = msg.payload.heap_free ;\nreturn msg;",
+        "func": "msg.ui_update = {} ;\nmsg.percentage = parseInt(msg.payload.heap_free / msg.payload.heap_total * 100) ;\nmsg.ui_update.max = msg.payload.heap_total;\nmsg.total = msg.payload.heap_total ;\nmsg.payload = msg.payload.heap_free;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 570,
-        "y": 680,
+        "x": 650,
+        "y": 780,
         "wires": [
             [
-                "4dd8e7a867bcb73d"
+                "4dd8e7a867bcb73d",
+                "9ee82d9bbac439f3",
+                "9aecfadf502071ce"
             ]
         ]
     },
@@ -647,21 +597,21 @@
         "height": 0,
         "gtype": "gage",
         "title": "FREE HEAP",
-        "label": "units",
-        "format": "{{msg.payload.heap_free}}",
-        "min": "200000",
+        "label": "",
+        "format": "{{msg.percentage}}%",
+        "min": "180000",
         "max": "250000",
         "colors": [
-            "#00b500",
+            "#b30000",
             "#e6e600",
-            "#ca3838"
+            "#65cb3a"
         ],
         "seg1": "",
         "seg2": "",
         "diff": false,
         "className": "",
-        "x": 770,
-        "y": 680,
+        "x": 870,
+        "y": 760,
         "wires": []
     },
     {
@@ -674,8 +624,8 @@
         "split": false,
         "rowsPerMsg": 1,
         "outputs": 1,
-        "x": 790,
-        "y": 880,
+        "x": 770,
+        "y": 1160,
         "wires": [
             [
                 "19f6936c09037d77"
@@ -695,8 +645,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 340,
-        "y": 880,
+        "x": 320,
+        "y": 1160,
         "wires": [
             [
                 "545a2d069502d90a",
@@ -717,8 +667,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 530,
-        "y": 880,
+        "x": 510,
+        "y": 1160,
         "wires": [
             [
                 "1d9619b7bec5194b",
@@ -739,8 +689,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 800,
-        "y": 800,
+        "x": 780,
+        "y": 1080,
         "wires": []
     },
     {
@@ -756,8 +706,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 550,
-        "y": 800,
+        "x": 530,
+        "y": 1080,
         "wires": []
     },
     {
@@ -773,8 +723,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 980,
-        "y": 880,
+        "x": 960,
+        "y": 1160,
         "wires": []
     },
     {
@@ -782,23 +732,44 @@
         "type": "function",
         "z": "80c8bfe066a469fa",
         "name": "Gauge Free heap",
-        "func": "msg.payload = msg.payload.heap_free ;\nreturn msg;",
+        "func": "// msg.ui_update.max = msg.payload.heap_total ;\nmsg.percentage = parseInt(msg.payload.heap_free / msg.payload.heap_total * 100);\nmsg.payload = msg.payload.heap_free;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 570,
-        "y": 980,
+        "x": 550,
+        "y": 1260,
         "wires": [
             [
-                "50102b2d955a9308"
+                "c492a7538cac3150"
             ]
         ]
     },
     {
-        "id": "50102b2d955a9308",
+        "id": "9ee82d9bbac439f3",
+        "type": "ui_text",
+        "z": "80c8bfe066a469fa",
+        "group": "3a60880de920b501",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Mémoire restante",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 890,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "c492a7538cac3150",
         "type": "ui_gauge",
         "z": "80c8bfe066a469fa",
         "name": "",
@@ -808,21 +779,231 @@
         "height": 0,
         "gtype": "gage",
         "title": "FREE HEAP",
-        "label": "units",
-        "format": "{{msg.payload.heap_free}}",
+        "label": "",
+        "format": "{{msg.percentage}}%",
         "min": "200000",
         "max": "250000",
         "colors": [
-            "#00b500",
+            "#b30000",
             "#e6e600",
-            "#ca3838"
+            "#65cb3a"
         ],
         "seg1": "",
         "seg2": "",
         "diff": false,
         "className": "",
         "x": 770,
-        "y": 980,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "78114f41778a34c7",
+        "type": "function",
+        "z": "80c8bfe066a469fa",
+        "name": "Chart Used heap",
+        "func": "// msg.ui_update.max = msg.payload.heap_total ;\nmsg.percentage = parseInt(msg.payload.heap_free / msg.payload.heap_total * 100) ;\n// msg.ui_update.max = msg.payload.heap_total;\nmsg.total = msg.payload.heap_total ;\nmsg.payload = msg.payload.heap_used;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 880,
+        "wires": [
+            [
+                "f3a1571797dcfdac"
+            ]
+        ]
+    },
+    {
+        "id": "f3a1571797dcfdac",
+        "type": "ui_chart",
+        "z": "80c8bfe066a469fa",
+        "name": "USED HEAP",
+        "group": "3a60880de920b501",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "USED HEAP",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "100",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 870,
+        "y": 880,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "74882e63397841d8",
+        "type": "postgresql",
+        "z": "80c8bfe066a469fa",
+        "name": "GET MIN FREE HEAP",
+        "query": "SELECT MIN(free_heap) FROM servers_load WHERE server_name = 'SERVEUR01'; ",
+        "postgreSQLConfig": "ccc85c541234edfb",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 650,
+        "y": 700,
+        "wires": [
+            [
+                "c19b98a940ca8b80"
+            ]
+        ]
+    },
+    {
+        "id": "15081c894eca5b3e",
+        "type": "debug",
+        "z": "80c8bfe066a469fa",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload[0]",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1220,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "c4079b71990e6ac8",
+        "type": "join",
+        "z": "80c8bfe066a469fa",
+        "name": "",
+        "mode": "auto",
+        "build": "object",
+        "property": "parts.index",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "useparts": false,
+        "accumulate": true,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1030,
+        "y": 640,
+        "wires": [
+            [
+                "15081c894eca5b3e"
+            ]
+        ]
+    },
+    {
+        "id": "9aecfadf502071ce",
+        "type": "ui_chart",
+        "z": "80c8bfe066a469fa",
+        "name": "",
+        "group": "3a60880de920b501",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "FREE HEAP",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "100",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 870,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c19b98a940ca8b80",
+        "type": "function",
+        "z": "80c8bfe066a469fa",
+        "name": "function 1",
+        "func": "msg.payload = msg.payload[0]\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 700,
+        "wires": [
+            [
+                "ef7f0613192a49e3",
+                "c4079b71990e6ac8"
+            ]
+        ]
+    },
+    {
+        "id": "ef7f0613192a49e3",
+        "type": "debug",
+        "z": "80c8bfe066a469fa",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1060,
+        "y": 700,
         "wires": []
     }
 ]
