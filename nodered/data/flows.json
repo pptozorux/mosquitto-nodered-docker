@@ -191,7 +191,7 @@
     {
         "id": "695d5842399a4077",
         "type": "ui_group",
-        "name": "Infra GOATESQUE",
+        "name": "Connexions au routeur WiFi",
         "tab": "bbbd71f67574d536",
         "order": 1,
         "disp": true,
@@ -258,7 +258,7 @@
     {
         "id": "3a60880de920b501",
         "type": "ui_group",
-        "name": "SERVEUR01",
+        "name": "SERVEUR 01",
         "tab": "bbbd71f67574d536",
         "order": 2,
         "disp": true,
@@ -274,6 +274,37 @@
         "order": 3,
         "disp": true,
         "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "2e2cdf367ac15a12",
+        "type": "ui_tab",
+        "name": "Logs",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "f29e01b0c71fa303",
+        "type": "ui_group",
+        "name": "Logs S1",
+        "tab": "2e2cdf367ac15a12",
+        "order": 5,
+        "disp": true,
+        "width": 15,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f96b5eb6db6a5af7",
+        "type": "ui_group",
+        "name": "Logs S2",
+        "tab": "2e2cdf367ac15a12",
+        "order": 4,
+        "disp": true,
+        "width": 14,
         "collapse": false,
         "className": ""
     },
@@ -479,16 +510,14 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 340,
+        "x": 300,
         "y": 580,
         "wires": [
             [
                 "334c84db80de6382",
                 "29de17d653a65cb6",
                 "30023bebca95a7ab",
-                "78114f41778a34c7",
-                "74882e63397841d8",
-                "c4079b71990e6ac8"
+                "78114f41778a34c7"
             ]
         ]
     },
@@ -518,7 +547,7 @@
         "type": "debug",
         "z": "80c8bfe066a469fa",
         "name": "debug 6",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -534,7 +563,7 @@
         "id": "334c84db80de6382",
         "type": "debug",
         "z": "80c8bfe066a469fa",
-        "name": "Trame",
+        "name": "Trame 01",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -543,7 +572,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 550,
+        "x": 560,
         "y": 500,
         "wires": []
     },
@@ -552,7 +581,7 @@
         "type": "debug",
         "z": "80c8bfe066a469fa",
         "name": "debug 7",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -591,10 +620,10 @@
         "type": "ui_gauge",
         "z": "80c8bfe066a469fa",
         "name": "",
-        "group": "3a60880de920b501",
+        "group": "8a7c7cefeeb6db7a",
         "order": 1,
-        "width": 0,
-        "height": 0,
+        "width": 6,
+        "height": 4,
         "gtype": "gage",
         "title": "FREE HEAP",
         "label": "",
@@ -633,55 +662,11 @@
         ]
     },
     {
-        "id": "29f26409d2890ec3",
-        "type": "mqtt in",
-        "z": "80c8bfe066a469fa",
-        "name": "",
-        "topic": "serveur02/Trame",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "a6cdbac67a21c79a",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 320,
-        "y": 1160,
-        "wires": [
-            [
-                "545a2d069502d90a",
-                "6cf3ae86cc46fcea",
-                "b543f87c374ff952"
-            ]
-        ]
-    },
-    {
-        "id": "6cf3ae86cc46fcea",
-        "type": "function",
-        "z": "80c8bfe066a469fa",
-        "name": "Store",
-        "func": "var uptime = msg.payload.uptime;\nvar timestamp = msg.payload.timestamp;\nvar free_heap = msg.payload.heap_free;\nvar ip = msg.payload.esp_ip ;\nvar uptime = msg.payload.uptime ;\n\nvar query = `INSERT INTO SERVERS_LOAD(TIMESTAMP, IP, SERVER_NAME, FREE_HEAP, UPTIME) VALUES ('${timestamp}', '${ip}', 'SERVEUR02', '${free_heap}', '${uptime}')` ; \n\nmsg.query = query ;\n\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 510,
-        "y": 1160,
-        "wires": [
-            [
-                "1d9619b7bec5194b",
-                "141140227145f56e"
-            ]
-        ]
-    },
-    {
         "id": "1d9619b7bec5194b",
         "type": "debug",
         "z": "80c8bfe066a469fa",
-        "name": "debug 2",
-        "active": true,
+        "name": "Serveur 02 Query",
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -689,7 +674,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 780,
+        "x": 810,
         "y": 1080,
         "wires": []
     },
@@ -697,8 +682,8 @@
         "id": "545a2d069502d90a",
         "type": "debug",
         "z": "80c8bfe066a469fa",
-        "name": "Trame",
-        "active": true,
+        "name": "Trame 02",
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -706,7 +691,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 530,
+        "x": 540,
         "y": 1080,
         "wires": []
     },
@@ -715,7 +700,7 @@
         "type": "debug",
         "z": "80c8bfe066a469fa",
         "name": "debug 3",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -739,11 +724,13 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 550,
-        "y": 1260,
+        "x": 570,
+        "y": 1240,
         "wires": [
             [
-                "c492a7538cac3150"
+                "c492a7538cac3150",
+                "6195e35be4d1703e",
+                "8650e54d09d3bfc6"
             ]
         ]
     },
@@ -751,7 +738,7 @@
         "id": "9ee82d9bbac439f3",
         "type": "ui_text",
         "z": "80c8bfe066a469fa",
-        "group": "3a60880de920b501",
+        "group": "8a7c7cefeeb6db7a",
         "order": 2,
         "width": 0,
         "height": 0,
@@ -773,15 +760,15 @@
         "type": "ui_gauge",
         "z": "80c8bfe066a469fa",
         "name": "",
-        "group": "8a7c7cefeeb6db7a",
+        "group": "3a60880de920b501",
         "order": 1,
-        "width": 0,
-        "height": 0,
+        "width": 6,
+        "height": 4,
         "gtype": "gage",
-        "title": "FREE HEAP",
+        "title": "FREE HEAP B",
         "label": "",
         "format": "{{msg.percentage}}%",
-        "min": "200000",
+        "min": "180000",
         "max": "250000",
         "colors": [
             "#b30000",
@@ -792,8 +779,8 @@
         "seg2": "",
         "diff": false,
         "className": "",
-        "x": 770,
-        "y": 1260,
+        "x": 780,
+        "y": 1220,
         "wires": []
     },
     {
@@ -821,8 +808,8 @@
         "type": "ui_chart",
         "z": "80c8bfe066a469fa",
         "name": "USED HEAP",
-        "group": "3a60880de920b501",
-        "order": 2,
+        "group": "8a7c7cefeeb6db7a",
+        "order": 4,
         "width": 0,
         "height": 0,
         "label": "USED HEAP",
@@ -883,7 +870,7 @@
         "type": "debug",
         "z": "80c8bfe066a469fa",
         "name": "debug 8",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -929,7 +916,7 @@
         "type": "ui_chart",
         "z": "80c8bfe066a469fa",
         "name": "",
-        "group": "3a60880de920b501",
+        "group": "8a7c7cefeeb6db7a",
         "order": 3,
         "width": 0,
         "height": 0,
@@ -994,7 +981,7 @@
         "type": "debug",
         "z": "80c8bfe066a469fa",
         "name": "debug 9",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1005,5 +992,493 @@
         "x": 1060,
         "y": 700,
         "wires": []
+    },
+    {
+        "id": "343630cd76af387c",
+        "type": "function",
+        "z": "80c8bfe066a469fa",
+        "name": "Chart Used heap",
+        "func": "// msg.ui_update.max = msg.payload.heap_total ;\nmsg.percentage = parseInt(msg.payload.heap_free / msg.payload.heap_total * 100) ;\n// msg.ui_update.max = msg.payload.heap_total;\nmsg.total = msg.payload.heap_total ;\nmsg.payload = msg.payload.heap_used;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 1360,
+        "wires": [
+            [
+                "913dc5f97b36c641"
+            ]
+        ]
+    },
+    {
+        "id": "913dc5f97b36c641",
+        "type": "ui_chart",
+        "z": "80c8bfe066a469fa",
+        "name": "USED HEAP",
+        "group": "3a60880de920b501",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "label": "USED HEAP B",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "100",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 770,
+        "y": 1360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6195e35be4d1703e",
+        "type": "ui_text",
+        "z": "80c8bfe066a469fa",
+        "group": "3a60880de920b501",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Mémoire restante B",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 790,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "8650e54d09d3bfc6",
+        "type": "ui_chart",
+        "z": "80c8bfe066a469fa",
+        "name": "",
+        "group": "3a60880de920b501",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "FREE HEAP B",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "100",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 780,
+        "y": 1300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "25e53ca842166ea3",
+        "type": "function",
+        "z": "80c8bfe066a469fa",
+        "name": "Store",
+        "func": "var uptime = msg.payload.uptime;\nvar timestamp = msg.payload.timestamp;\nvar free_heap = msg.payload.heap_free;\nvar ip = msg.payload.esp_ip ;\nvar uptime = msg.payload.uptime ;\nvar used_heap = msg.payload.heap_used ;\n\n\nvar query = `INSERT INTO SERVERS_LOAD(TIMESTAMP, IP, SERVER_NAME, FREE_HEAP, USED_HEAP, UPTIME) VALUES ('${timestamp}', '${ip}', 'SERVEUR02', '${free_heap}', '${used_heap}', '${uptime}')` ; \n\nmsg.query = query ;\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 1160,
+        "wires": [
+            [
+                "1d9619b7bec5194b",
+                "141140227145f56e"
+            ]
+        ]
+    },
+    {
+        "id": "1e21f43f1187e3bd",
+        "type": "mqtt in",
+        "z": "80c8bfe066a469fa",
+        "name": "serveur02/Trame",
+        "topic": "serveur02/Trame",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "a6cdbac67a21c79a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 300,
+        "y": 1240,
+        "wires": [
+            [
+                "25e53ca842166ea3",
+                "545a2d069502d90a",
+                "b543f87c374ff952",
+                "343630cd76af387c"
+            ]
+        ]
+    },
+    {
+        "id": "8e7fae7f167e19dd",
+        "type": "mqtt in",
+        "z": "80c8bfe066a469fa",
+        "name": "serveur02Charge",
+        "topic": "serveur02/Charge",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "a6cdbac67a21c79a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1420,
+        "y": 820,
+        "wires": [
+            [
+                "39689bbfa2c9fd81",
+                "71bf944324e7eade"
+            ]
+        ]
+    },
+    {
+        "id": "39689bbfa2c9fd81",
+        "type": "debug",
+        "z": "80c8bfe066a469fa",
+        "name": "Serveur 02 Logs",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1680,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "71bf944324e7eade",
+        "type": "function",
+        "z": "80c8bfe066a469fa",
+        "name": "Store",
+        "func": "var timestamp = new Date();\ntimestamp = timestamp.toLocaleString() ; \nvar client_ip = msg.payload.client_ip ;\n\n\nvar query = `INSERT INTO WEB_LOGS(TIMESTAMP, CLIENT_IP, SERVER_NAME) VALUES ('${timestamp}', '${client_ip}', 'SERVEUR02')` ; \n\nmsg.query = query ;\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1650,
+        "y": 820,
+        "wires": [
+            [
+                "7072d87dcb3d3f0e"
+            ]
+        ]
+    },
+    {
+        "id": "7072d87dcb3d3f0e",
+        "type": "postgresql",
+        "z": "80c8bfe066a469fa",
+        "name": "STORE SERVEUR 02 LOGS",
+        "query": "",
+        "postgreSQLConfig": "ccc85c541234edfb",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 1960,
+        "y": 820,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e981d56d33ce0dd2",
+        "type": "inject",
+        "z": "80c8bfe066a469fa",
+        "name": "Start logs refresh every seconds",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "SERVEUR01",
+        "payloadType": "str",
+        "x": 1500,
+        "y": 500,
+        "wires": [
+            [
+                "7c6bbbe245d44ba2"
+            ]
+        ]
+    },
+    {
+        "id": "7c6bbbe245d44ba2",
+        "type": "postgresql",
+        "z": "80c8bfe066a469fa",
+        "name": "SERVEUR 01 LOGS",
+        "query": "SELECT server_name, client_ip, timestamp\nFROM web_logs\nWHERE server_name = '{{{ msg.payload }}}'\nORDER BY id DESC\nLIMIT 30 ;\n",
+        "postgreSQLConfig": "ccc85c541234edfb",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 1800,
+        "y": 500,
+        "wires": [
+            [
+                "09322ecd1348ed05",
+                "62df566af02278e0"
+            ]
+        ]
+    },
+    {
+        "id": "09322ecd1348ed05",
+        "type": "debug",
+        "z": "80c8bfe066a469fa",
+        "name": "Query results for server logs",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2140,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "62df566af02278e0",
+        "type": "ui_template",
+        "z": "80c8bfe066a469fa",
+        "group": "f29e01b0c71fa303",
+        "name": "",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "format": "<style>\n    table {\n        width: 100%;\n        border-collapse: collapse;\n        margin: 10px 0;\n        font-size: 14px;\n        font-family: Arial, sans-serif;\n        text-align: left;\n        table-layout: fixed;\n    }\n\n    thead th {\n        background-color: #007BFF;\n        color: white;\n        padding: 8px;\n        word-wrap: break-word;\n    }\n\n    tbody td {\n        padding: 8px;\n        border: 1px solid #ddd;\n        word-wrap: break-word;\n    }\n\n    tbody tr:nth-child(even) {\n        background-color: #f2f2f2;\n    }\n\n    tbody tr:hover {\n        background-color: #ddd;\n    }\n\n    /* Style pour le texte rouge */\n    .unknown {\n        color: red;\n        font-weight: bold;\n        /* Optionnel : met en gras */\n    }\n</style>\n\n<table>\n    <thead>\n        <tr>\n            <th style=\"width: 5%;\">#</th>\n            <th style=\"width: 30%;\">SERVEUR</th>\n            <th style=\"width: 35%;\">CLIENT CONNEXION</th>\n            <th style=\"width: 30%;\">TIME</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr ng-repeat=\"log in msg.payload\">\n            <td>{{$index + 1}}</td>\n            <td>{{log.server_name}}</td>\n            <td>{{log.client_ip}}</td>\n            <td>{{log.timestamp}}</td>\n        </tr>\n    </tbody>\n</table>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2080,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1ef220fe2b3e944a",
+        "type": "inject",
+        "z": "80c8bfe066a469fa",
+        "name": "Start logs refresh every seconds",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "SERVEUR02",
+        "payloadType": "str",
+        "x": 1500,
+        "y": 640,
+        "wires": [
+            [
+                "d398d2acea668223"
+            ]
+        ]
+    },
+    {
+        "id": "d398d2acea668223",
+        "type": "postgresql",
+        "z": "80c8bfe066a469fa",
+        "name": "SERVEUR 02 LOGS",
+        "query": "SELECT server_name, client_ip, timestamp\nFROM web_logs\nWHERE server_name = '{{{ msg.payload }}}'\nORDER BY id DESC\nLIMIT 30 ;\n",
+        "postgreSQLConfig": "ccc85c541234edfb",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 1800,
+        "y": 640,
+        "wires": [
+            [
+                "c8201308f8c9814a",
+                "93e702d838bd9ad4"
+            ]
+        ]
+    },
+    {
+        "id": "c8201308f8c9814a",
+        "type": "debug",
+        "z": "80c8bfe066a469fa",
+        "name": "Query results for server logs",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2140,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "93e702d838bd9ad4",
+        "type": "ui_template",
+        "z": "80c8bfe066a469fa",
+        "group": "f96b5eb6db6a5af7",
+        "name": "",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "format": "<style>\n    table {\n        width: 100%;\n        border-collapse: collapse;\n        margin: 10px 0;\n        font-size: 14px;\n        font-family: Arial, sans-serif;\n        text-align: left;\n        table-layout: fixed;\n    }\n\n    thead th {\n        background-color: #007BFF;\n        color: white;\n        padding: 8px;\n        word-wrap: break-word;\n    }\n\n    tbody td {\n        padding: 8px;\n        border: 1px solid #ddd;\n        word-wrap: break-word;\n    }\n\n    tbody tr:nth-child(even) {\n        background-color: #f2f2f2;\n    }\n\n    tbody tr:hover {\n        background-color: #ddd;\n    }\n\n    /* Style pour le texte rouge */\n    .unknown {\n        color: red;\n        font-weight: bold;\n        /* Optionnel : met en gras */\n    }\n</style>\n\n<table>\n    <thead>\n        <tr>\n            <th style=\"width: 5%;\">#</th>\n            <th style=\"width: 30%;\">SERVEUR</th>\n            <th style=\"width: 35%;\">CLIENT CONNEXION</th>\n            <th style=\"width: 30%;\">TIME</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr ng-repeat=\"log in msg.payload\">\n            <td>{{$index + 1}}</td>\n            <td>{{log.server_name}}</td>\n            <td>{{log.client_ip}}</td>\n            <td>{{log.timestamp}}</td>\n        </tr>\n    </tbody>\n</table>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2080,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0d22710b8ebf7c7e",
+        "type": "mqtt in",
+        "z": "80c8bfe066a469fa",
+        "name": "serveur01/Charge",
+        "topic": "serveur01/Charge",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "a6cdbac67a21c79a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1430,
+        "y": 980,
+        "wires": [
+            [
+                "e8a50f8f8213bbb6",
+                "54ff2c0bef0e344e"
+            ]
+        ]
+    },
+    {
+        "id": "e8a50f8f8213bbb6",
+        "type": "debug",
+        "z": "80c8bfe066a469fa",
+        "name": "Serveur 01 Logs",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1680,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "54ff2c0bef0e344e",
+        "type": "function",
+        "z": "80c8bfe066a469fa",
+        "name": "Store",
+        "func": "var timestamp = new Date();\ntimestamp = timestamp.toLocaleString() ; \nvar client_ip = msg.payload.client_ip ;\n\n\nvar query = `INSERT INTO WEB_LOGS(TIMESTAMP, CLIENT_IP, SERVER_NAME) VALUES ('${timestamp}', '${client_ip}', 'SERVEUR01')` ; \n\nmsg.query = query ;\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1650,
+        "y": 980,
+        "wires": [
+            [
+                "186fce4e983bee6f"
+            ]
+        ]
+    },
+    {
+        "id": "186fce4e983bee6f",
+        "type": "postgresql",
+        "z": "80c8bfe066a469fa",
+        "name": "STORE SERVEUR 01 LOGS",
+        "query": "",
+        "postgreSQLConfig": "ccc85c541234edfb",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 1960,
+        "y": 980,
+        "wires": [
+            []
+        ]
     }
 ]
