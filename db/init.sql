@@ -22,3 +22,11 @@ CREATE TABLE servers_load (
     used_heap INTEGER NOT NULL,
     uptime INTEGER NOT NULL
 );
+
+
+CREATE TABLE web_logs (
+    id SERIAL PRIMARY KEY,
+    timestamp VARCHAR NOT NULL,
+    client_ip VARCHAR NOT NULL,
+    server_name VARCHAR NOT NULL
+) ;
