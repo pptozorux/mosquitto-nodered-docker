@@ -340,22 +340,6 @@
         "sessionExpiry": ""
     },
     {
-        "id": "08209c96f2ed087f",
-        "type": "postgresql",
-        "z": "6f773d2488747d0e",
-        "name": "",
-        "query": "SELECT * FROM ;",
-        "postgreSQLConfig": "ccc85c541234edfb",
-        "split": false,
-        "rowsPerMsg": 1,
-        "outputs": 1,
-        "x": 230,
-        "y": 240,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "79dfc7ac55dfc51a",
         "type": "mqtt in",
         "z": "6f773d2488747d0e",
@@ -474,16 +458,16 @@
         "id": "0b3b661de39a4c67",
         "type": "mqtt in",
         "z": "6f773d2488747d0e",
-        "name": "Localhost",
+        "name": "haproxy/alerts",
         "topic": "haproxy/alerts",
         "qos": "2",
         "datatype": "auto-detect",
-        "broker": "86884acbe9baa6da",
+        "broker": "a6cdbac67a21c79a",
         "nl": false,
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 220,
+        "x": 230,
         "y": 440,
         "wires": [
             [
