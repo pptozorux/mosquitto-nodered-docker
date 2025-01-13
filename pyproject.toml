@@ -1,6 +1,10 @@
 [project]
+version = "1.0.0"
 name = "mqtt-notifier"
 dependencies = [
     "paho-mqtt",
     "argcomplete"
+]
+authors = [
+    { name = "Guilhem CHALARD PÉRENNOU", email = "guilhem.chalard--perennou@univ-tlse3.fr" }
 ]
