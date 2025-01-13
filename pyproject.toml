@@ -1,0 +1,6 @@
+[project]
+name = "mqtt-notifier"
+dependencies = [
+    "paho-mqtt",
+    "argcomplete"
+]
