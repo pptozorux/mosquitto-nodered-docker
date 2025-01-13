@@ -31,3 +31,11 @@ services:
     env_file:
       - db/.env
     restart: unless-stopped
+
+  ntp:
+    container_name: ntpserver
+    build:
+      context: ./ntp
+      dockerfile: Dockerfile
+    ports:
+      - 123:123/udp
